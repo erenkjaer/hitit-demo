@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Twitter Panel</title>
+    <script src="/webjars/jquery/3.6.1/jquery.min.js"></script>
+    <script src="/GetRequest.js"></script>
+    <script src="/PostRequest.js"></script>
+</head>
+<body>
+    <h2>Create User</h2>
+    <div>
+        <form th:action="@{/users/addUser}" method="post">
+            <label for="userName">Username:</label><br>
+            <input type="text" id="userName" name="userName" required><br><br>
+            <label for="email">EMail:</label><br>
+            <input type="text" id="email" name="email" required><br><br>
+            <label for="password">Password:</label><br>
+            <input type="text" id="password" name="password" required><br><br>
+            <label for="pin">Pin:</label><br>
+            <input type="number" id="pin" name="pin" required ><br><br>
+            <label for="birthday">Birthday:</label><br>
+            <input type="date" id="birthday" name="birthday" required ><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <div>
+        <h2>User List</h2>
+        <hr/>
+
+        <form id="user-list" >
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Show</th>
+                    <th>User Name</th>
+                    <th> Email</th>
+                    <th> Time Created</th>
+                </tr>
+            </thead>
+            <tbody id="user-count">
+                <tr th:each="user,iter:${users}" th:id="${iter.index}">
+                    <td><label>
+                        <input type="checkbox"  th:name="${iter.index}" th:id="'checkbox'+${iter.index}">
+                    </label></td>
+                    <td th:text="${user.userName}"> </td>
+                    <td th:text="${user.email}" th:id="'email'+${iter.index}"> </td>
+                    <td th:text="${user.createdAt}"> </td>
+                    <td><button>Update</button></td>
+                    <td>
+                        <form th:action="@{'remove/{email}'(email=${user.email})}" th:method="delete" >
+                            <button type="submit" id="submitButton"> Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+           <button type="submit" id="show-tweet" value="Show Tweets" >Show Tweets</button>
+            <button type="submit" id="show-all-tweet" value="Show Tweets" >Show Tweets</button>
+        </form>
+
+        <h2>Tweet List</h2>
+        <hr/>
+        <table id="tweet-table">
+            <thead>
+                <tr>
+                    <th> User Name</th>
+                    <th> Content</th>
+                </tr>
+            </thead>
+            <tbody id="tweet-body">
+
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <h2> Add Tweet</h2>
+        <hr/>
+        <form id="add-tweet">
+            <label for="tweet-email">Username:</label><br>
+            <input type="text" id="tweet-email" name="tweet-email" required><br><br>
+            <label for="content">Content:</label><br>
+            <input type="text" id="content" name="content" required><br><br>
+            <input type="submit" value="Submit">
+        </form>
+        <div id="tweet-result"></div>
+    </div>
+</body>
+</html>
