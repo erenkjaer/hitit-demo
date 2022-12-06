@@ -40,7 +40,6 @@ public class TweetRestControllerImpl implements TweetRestController {
     @PostMapping
     public ResponseEntity<TweetDto> createTweet(@RequestBody TweetDto tweet) {
         TweetDto createdTweet = tweetService.createTweet(tweet);
-        createdTweet.setCreatedAt(LocalDateTime.now());
         return ResponseEntity.ok(createdTweet);
     }
 
