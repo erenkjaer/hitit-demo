@@ -13,7 +13,7 @@
         <form th:action="@{/users/addUser}" method="post">
             <label for="userName">Username:</label><br>
             <input type="text" id="userName" name="userName" required><br><br>
-            <label for="email">EMail:</label><br>
+            <label for="email">Email:</label><br>
             <input type="text" id="email" name="email" required><br><br>
             <label for="password">Password:</label><br>
             <input type="password" id="password" name="password" required><br><br>
@@ -50,14 +50,14 @@
                     <td><button>Update</button></td>
                     <td>
                         <form th:action="@{'remove/{email}'(email=${user.email})}" th:method="delete" >
-                            <button type="submit" id="submitButton"> Delete</button>
+                            <button type="submit"> Delete</button>
                         </form>
                     </td>
                 </tr>
             </tbody>
         </table>
            <button type="submit" id="show-tweet" value="Show Tweets" >Show Tweets</button>
-            <button type="submit" id="show-all-tweet" value="Show Tweets" >Show Tweets</button>
+            <button type="submit" id="show-all-tweet" value="Show All Tweets" >Show All Tweets</button>
         </form>
 
         <h2>Tweet List</h2>
@@ -65,7 +65,7 @@
         <table id="tweet-table">
             <thead>
                 <tr>
-                    <th> User Name</th>
+                    <th> UserEmail</th>
                     <th> Content</th>
                 </tr>
             </thead>
@@ -78,7 +78,7 @@
         <h2> Add Tweet</h2>
         <hr/>
         <form id="add-tweet">
-            <label for="tweet-email">Username:</label><br>
+            <label for="tweet-email">UserEmail:</label><br>
             <input type="text" id="tweet-email" name="tweet-email" required><br><br>
             <label for="content">Content:</label><br>
             <input type="text" id="content" name="content" required><br><br>

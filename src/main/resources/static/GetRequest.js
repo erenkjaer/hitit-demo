@@ -39,6 +39,7 @@ $(document).ready(
 
         }
         function ajaxGetAll(){
+            $('#tweet-body tr').remove();
             $.ajax({
                 type: "GET",
                 url:"../api/v1/tweets",
