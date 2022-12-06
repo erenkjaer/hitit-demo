@@ -24,7 +24,6 @@ $(document).ready( function (){
                 }else{
                     $("#tweet-result").html("<strong>Error</strong>");
                 }
-                console.log(result.ownerEmail);
             },
         })
     }

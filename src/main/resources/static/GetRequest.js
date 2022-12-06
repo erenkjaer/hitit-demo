@@ -21,7 +21,6 @@ $(document).ready(
                         url:`../api/v1/tweets/owner/${$(`#email${ind}`).html()}`,
                         success:function (result){
                             if (result){
-                                console.log(result)
                                 result.forEach((x)=>{
                                     $('#tweet-table > tbody:last-child').append('<tr>' +
                                         `<td>${x.ownerEmail}</td>` +
@@ -44,7 +43,6 @@ $(document).ready(
                 type: "GET",
                 url:"../api/v1/tweets",
                 success:function (result){
-                    console.log(result);
                     result.forEach((x)=>{
                         $('#tweet-table > tbody:last-child').append('<tr>' +
                             `<td>${x.ownerEmail}</td>` +
